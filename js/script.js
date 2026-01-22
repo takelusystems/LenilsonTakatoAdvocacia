@@ -27,11 +27,31 @@ document.addEventListener('DOMContentLoaded', function() {
     nav.classList.toggle('active');
   });
   
-  // Fechar menu ao clicar em um link
+  // Fechar menu ao clicar em um link e ocultar do histórico
   navLinks.forEach(link => {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function(e) {
       menuToggle.classList.remove('active');
       nav.classList.remove('active');
+      
+      // Ocultar página do histórico do navegador
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('#')) {
+        e.preventDefault();
+        // Carregar a página com fetch e atualizar o DOM
+        fetch(href)
+          .then(response => response.text())
+          .then(html => {
+            document.documentElement.innerHTML = html;
+            // Substituir no histórico em vez de adicionar
+            window.history.replaceState(null, '', href);
+            // Reinicializar scripts após carregar nova página
+            location.reload();
+          })
+          .catch(error => {
+            console.error('Erro ao carregar página:', error);
+            window.location.href = href;
+          });
+      }
     });
   });
 
