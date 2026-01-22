@@ -1,0 +1,945 @@
+/* ================= RESET / BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Georgia", serif;
+  background: #fff;
+  color: #222;
+  line-height: 1.6;
+  margin-top: 90px; /* Espaço para o header fixo */
+}
+
+/* ================= TIPOGRAFIA ================= */
+/* Títulos principais das seções */
+h2 {
+  text-align: center;    
+  font-size: 1.8rem;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+/* Subtítulos reutilizáveis */
+.subtitulo {
+  color: #d4af37;          
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: left;    
+}
+
+/* Títulos de bloco internos */
+h3 {
+  font-size: 1.3rem;
+  color: #d4af37;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center;    
+}
+
+/* Parágrafos gerais */
+p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* ================= HEADER ================= */
+header {
+  background: #111;
+  padding: 15px 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header .logo img { 
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+header .logo img:hover {
+  transform: scale(1.05);
+}
+
+header nav {
+  display: flex;
+  gap: 30px;
+}
+
+header nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+header nav a:hover, 
+header nav a.active { 
+  color: #d4af37;
+  border-bottom: 2px solid #d4af37;
+}
+
+/* ================= MENU HAMBURGER ================= */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Evita cortar a parte superior (ex.: cabeça da estátua). Ajuste se necessário */
+  object-position: center 40%;
+  z-index: 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #d4af37;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero h2 {
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero h3.oab {
+  font-size: 1rem;
+  color: #d4af37;
+  margin-bottom: 15px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.breadcrumb {
+  color: #fff;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ================= BOTÕES ================= */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #d4af37;
+  color: #111;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #d4af37;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: transparent;
+  color: #d4af37;
+  transform: scale(1.05);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ================= SEÇÕES BASE ================= */
+section {
+  padding: 60px 0;
+}
+
+/* ================= DIVISORES ================= */
+.barra-dourada {
+  width: 80px;
+  height: 3px;
+  background: #d4af37;
+  margin: 40px auto;
+  border-radius: 2px;
+  animation: slideIn 0.6s ease;
+}
+
+@keyframes slideIn {
+  from { width: 0; }
+  to { width: 80px; }
+}
+
+.ornamento {
+  width: 60px;
+  height: 2px;
+  background: #ccc;
+  margin: 40px auto;
+}
+
+/* ================= QUEM SOMOS / ESCRITÓRIO ================= */
+.quem-somos {
+  padding: 60px 0;
+  background: #fff;
+}
+
+.quem-somos .container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.quem-somos .texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.quem-somos h2 { 
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.quem-somos h3 { 
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.quem-somos p { 
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.quem-somos .imagem {
+  flex: 1;
+  text-align: center;
+  min-width: 300px;
+}
+
+.quem-somos .imagem img {
+  max-width: 70%;
+  height: auto;
+}
+
+.quem-somos img,
+.areas-img img,
+.sobre-imagem img {
+  max-width: 100%;
+  border: 4px solid #000;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.quem-somos img:hover,
+.areas-img img:hover,
+.sobre-imagem img:hover {
+  transform: scale(1.05);
+}
+
+/* ================= ADVOGADO ================= */
+.advogado {
+  padding: 60px 0;
+  background: #f9f9f9;
+}
+
+.advogado-card {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.advogado-img img {
+  width: 220px;
+  height: auto; /* manter proporção */
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 4px solid #000;
+  transition: transform 0.3s ease;
+}
+
+.advogado-img img:hover {
+  transform: scale(1.05);
+}
+
+.advogado-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.advogado-info h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.advogado-info h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #d4af37;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.advogado-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.advogado-info li {
+  margin-bottom: 6px;
+  color: #444;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ================= ÁREAS DE ATUAÇÃO ================= */
+.areas {
+  padding: 60px 0;
+  background: #fff;
+}
+
+.areas .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.areas-img,
+.sobre-imagem {
+  flex: 1;
+  text-align: center;
+  min-width: 300px;
+}
+
+.areas-img img,
+.sobre-imagem img {
+  width: 100%;
+  max-width: 500px;
+  height: auto; /* manter proporção e evitar cortes */
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.areas-content,
+.sobre-texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.areas-content h2,
+.sobre-texto h2 {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.areas-content .area {
+  margin-bottom: 25px;
+}
+
+.areas-content h3,
+.sobre-texto h3 {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.atuacao {
+  padding: 60px 0;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.atuacao .container {
+  padding: 0 20px;
+}
+
+.atuacao h2 {
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff9e4;
+  border: 2px solid #000;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #d4af37;
+  text-align: center;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+  text-align: justify;
+}
+
+/* ================= SOBRE ================= */
+.sobre {
+  padding: 60px 0;
+  background: #f9f9f9;
+}
+
+.sobre .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.sobre-texto h2 {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.sobre-texto .btn {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+/* ================= CONTATO ================= */
+.contato {
+  padding: 60px 10%;
+  background: #f9f9f9;
+}
+
+.contato-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contato-info h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #d4af37;
+  text-align: left;
+}
+
+.contato-info p {
+  text-align: justify;
+  color: #000;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.contato-info a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contato-info a:hover {
+  color: #d4af37;
+  text-decoration: underline;
+}
+
+.contato-social {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contato-social a {
+  color: #d4af37;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 15px;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.contato-social a:hover {
+  background: #d4af37;
+  color: #111;
+}
+
+.contato-maps {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.maps-frame {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 8px;
+}
+
+/* ================= CITAÇÃO ================= */
+.citacao {
+  background: linear-gradient(135deg, #f2f2f2 0%, #e8e8e8 100%);
+  padding: 60px 15%;
+  text-align: center;
+  font-style: italic;
+  color: #555;
+}
+
+.citacao .container {
+  max-width: 800px;
+}
+
+.citacao p {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #222;
+}
+
+.citacao span {
+  font-size: 1rem;
+  color: #888;
+  font-style: normal;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-logo img {
+  max-width: 150px;
+  transition: transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.05);
+}
+
+.footer-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-info h4 {
+  color: #d4af37;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.footer-info p {
+  color: #d9d9d9;
+  margin-bottom: 5px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer-info a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+  color: #d4af37;
+}
+
+.footer-social {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 15px;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+.footer-maps {
+  margin: 30px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.footer-maps .maps-frame {
+  width: 100%;
+  height: 250px;
+  border: 0;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 1024px) {
+  section {
+    padding: 50px 8%;
+  }
+  
+  body {
+    margin-top: 80px;
+  }
+  
+  .hero {
+    height: 70vh;
+  }
+  
+  header nav {
+    gap: 20px;
+  }
+  
+  header nav a {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    margin-top: 70px;
+  }
+  
+  header {
+    padding: 10px 20px;
+  }
+  
+  .menu-toggle {
+    display: flex;
+  }
+  
+  header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #111;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  header nav.active {
+    max-height: 500px;
+  }
+  
+  header nav a {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+    border: none;
+    font-size: 0.85rem;
+  }
+  
+  header .container {
+    position: relative;
+  }
+  
+  header .logo img {
+    height: 50px;
+  }
+  
+  .hero {
+    height: 60vh;
+    padding-top: 40px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+  
+  section {
+    padding: 40px 6%;
+  }
+  
+  .quem-somos .container,
+  .advogado-card,
+  .areas .container,
+  .sobre,
+  .contato-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .quem-somos img,
+  .advogado-img img,
+  .areas-img img,
+  .sobre-imagem img {
+    max-width: 85%;
+    height: auto;
+  }
+  
+  .quem-somos .texto,
+  .quem-somos .imagem,
+  .advogado-info,
+  .areas-content,
+  .sobre-texto {
+    text-align: center;
+  }
+  
+  .quem-somos h2,
+  .quem-somos h3,
+  .advogado-info h2,
+  .advogado-info h3,
+  .areas-content h2,
+  .areas-content h3,
+  .contato-info h3,
+  .sobre-texto h2,
+  .sobre-texto h3 {
+    text-align: center;
+  }
+  
+  .contato-info p {
+    text-align: center;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 10px 15px;
+  }
+  
+  .menu-toggle {
+    display: flex;
+  }
+  
+  header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #111;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  header nav.active {
+    max-height: 500px;
+  }
+  
+  header nav a {
+    padding: 12px 15px;
+    border-bottom: 1px solid #333;
+    border: none;
+  }
+  
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  
+  .hero h3.oab {
+    font-size: 0.9rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  .citacao p {
+    font-size: 1.1rem;
+  }
+  
+  .maps-frame {
+    height: 250px;
+  }
+}
+
+/* ================= OTIMIZAÇÕES DE PERFORMANCE ================= */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  transition: all 0.3s ease;
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeIn 0.6s ease-in-out;
+}
