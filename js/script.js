@@ -1,4 +1,7 @@
 
+// Ocultar página do histórico do navegador
+window.history.replaceState(null, '', window.location.href);
+
 // Lazy loading para imagens
 if ('IntersectionObserver' in window) {
   const images = document.querySelectorAll('img[data-src]');
